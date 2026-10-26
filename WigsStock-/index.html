@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WigsStock עברה לכתובת חדשה</title>
+<meta http-equiv="refresh" content="0; url=https://wigsstock-sync.benzi-naor.workers.dev/">
+<script>
+  // The old installed app still has a service worker on this address; remove it
+  // so the phone stops showing the old cached version, then go to the new app.
+  (async () => {
+    try {
+      if ('serviceWorker' in navigator) {
+        for (const r of await navigator.serviceWorker.getRegistrations()) await r.unregister();
+      }
+      if (window.caches) for (const k of await caches.keys()) await caches.delete(k);
+    } catch (e) {}
+    location.replace('https://wigsstock-sync.benzi-naor.workers.dev/');
+  })();
+</script>
+<style>body{font-family:system-ui,sans-serif;text-align:center;padding:48px 16px;color:#1f2a2b;background:#fff}a{color:#00838f}</style>
+</head>
+<body>
+<p>האפליקציה עברה לכתובת חדשה. מעבירים אותך…</p>
+<p><a href="https://wigsstock-sync.benzi-naor.workers.dev/">לחצו כאן אם המעבר לא קרה</a></p>
+</body>
+</html>
